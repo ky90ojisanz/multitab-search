@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Word Search Highlighter</title>
+    <style>
+      body {
+        width: 300px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        font-size: 13px;
+        margin: 0;
+        padding: 10px;
+        background-color: #252526;
+        color: #cccccc;
+      }
+      .search-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        background-color: #3c3c3c;
+        border: 1px solid #3c3c3c;
+      }
+      #searchWords {
+        flex-grow: 1;
+        background-color: #3c3c3c;
+        border: none;
+        color: #cccccc;
+        padding: 6px 8px;
+        font-size: 13px;
+      }
+      #searchWords:focus {
+        outline: none;
+      }
+      .search-icon {
+        padding: 0 8px;
+        color: #858585;
+      }
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+      .option {
+        display: flex;
+        align-items: center;
+      }
+      .option input[type="checkbox"] {
+        margin-right: 8px;
+      }
+      button {
+        padding: 6px;
+        background-color: #0e639c;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 13px;
+      }
+      button:hover {
+        background-color: #1177bb;
+      }
+      #resultCount {
+        margin-top: 10px;
+        text-align: right;
+        color: #858585;
+      }
+      .navigation-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+      .navigation-container button {
+        width: 48%;
+      }
+      .tab-results {
+        margin-top: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        border-top: 1px solid #3c3c3c;
+        padding-top: 10px;
+      }
+      .tab-result {
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search-container">
+      <span class="search-icon">&#128269;</span>
+      <input type="text" id="searchWords" placeholder="検索する単語を入力" />
+    </div>
+    <div class="options-container">
+      <label class="option">
+        <input type="checkbox" id="searchMultipleTabs" />
+        <span>複数タブから検索する</span>
+      </label>
+      <label class="option">
+        <input type="checkbox" id="caseSensitive" />
+        <span>大文字小文字を区別する (Aa)</span>
+      </label>
+      <label class="option">
+        <input type="checkbox" id="wholeWord" />
+        <span>単語単位で検索する (Ab|)</span>
+      </label>
+      <label class="option">
+        <input type="checkbox" id="useRegex" />
+        <span>正規表現を使用する (.*)</span>
+      </label>
+    </div>
+    <div class="navigation-container">
+      <button id="prevMatch">&#9650; 前へ</button>
+      <button id="nextMatch">&#9660; 次へ</button>
+    </div>
+    <div id="resultCount"></div>
+    <div id="tabResults" class="tab-results"></div>
+    <script src="popup.js"></script>
+  </body>
+</html>
