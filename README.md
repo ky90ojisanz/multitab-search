@@ -23,10 +23,9 @@ MultiTab Search is a Chrome extension that allows users to search for keywords a
 
 ### Installation
 
-1. Clone this repository or download the source code
-2. Open Chrome and navigate to `chrome://extensions`
-3. Enable "Developer mode" in the top right corner
-4. Click "Load unpacked" and select the directory containing the extension files
+1. Visit the [Chrome Web Store page for MultiTab Search](https://chromewebstore.google.com/detail/multitab-search/ecjagfdhenfmhigmcakoflahkgkbmccl)
+2. Click on "Add to Chrome"
+3. Confirm the installation by clicking "Add extension" in the popup
 
 ### Usage
 
@@ -69,10 +68,9 @@ MultiTab Searchは、複数のタブにわたってキーワードを検索で�
 
 ### インストール方法
 
-1. このリポジトリをクローンするか、ソースコードをダウンロードします
-2. Chromeで `chrome://extensions` に移動します
-3. 右上の「デベロッパーモード」を有効にします
-4. 「パッケージ化されていない拡張機能を読み込む」をクリックし、拡張機能のファイルが含まれているディレクトリを選択します
+1. [Chrome ウェブストアのMultiTab Searchページ](https://chromewebstore.google.com/detail/multitab-search/ecjagfdhenfmhigmcakoflahkgkbmccl)にアクセスします
+2. 「Chromeに追加」をクリックします
+3. ポップアップで「拡張機能を追加」をクリックして、インストールを確認します
 
 ### 使用方法
 
