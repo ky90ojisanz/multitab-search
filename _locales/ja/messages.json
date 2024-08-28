@@ -1,0 +1,26 @@
+{
+  "extName": {
+    "message": "MultiTab Search"
+  },
+  "searchTabAcross": {
+    "message": "複数タブから検索する"
+  },
+  "caseSensitive": {
+    "message": "大文字小文字を区別する (Aa)"
+  },
+  "wholeWord": {
+    "message": "単語単位で検索する (Ab|)"
+  },
+  "useRegex": {
+    "message": "正規表現を使用する (.*)"
+  },
+  "previous": {
+    "message": "前へ"
+  },
+  "next": {
+    "message": "次へ"
+  },
+  "searchPlaceholder": {
+    "message": "検索する単語を入力"
+  }
+}

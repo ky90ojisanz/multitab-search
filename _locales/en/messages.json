@@ -1,0 +1,26 @@
+{
+  "extName": {
+    "message": "MultiTab Search"
+  },
+  "searchTabAcross": {
+    "message": "Search across tab"
+  },
+  "caseSensitive": {
+    "message": "Case sensitive (Aa)"
+  },
+  "wholeWord": {
+    "message": "Whole word (Ab|)"
+  },
+  "useRegex": {
+    "message": "Use regular expressions (.*)"
+  },
+  "previous": {
+    "message": "Previous"
+  },
+  "next": {
+    "message": "Next"
+  },
+  "searchPlaceholder": {
+    "message": "Enter search terms"
+  }
+}

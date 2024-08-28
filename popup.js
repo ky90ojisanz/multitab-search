@@ -17,6 +17,22 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  // 言語設定
+  // タイトルを設定
+  document.getElementById('title').textContent = chrome.i18n.getMessage("extName");
+
+  // チェックボックスのラベルを設定
+  document.getElementById('searchTabAcrossLabel').textContent = chrome.i18n.getMessage("searchTabAcross");
+  document.getElementById('caseSensitiveLabel').textContent = chrome.i18n.getMessage("caseSensitive");
+  document.getElementById('wholeWordLabel').textContent = chrome.i18n.getMessage("wholeWord");
+  document.getElementById('useRegexLabel').textContent = chrome.i18n.getMessage("useRegex");
+  document.getElementById('previousLabel').textContent = chrome.i18n.getMessage("previous");
+  document.getElementById('nextLabel').textContent = chrome.i18n.getMessage("next");
+  const searchInput = document.getElementById('searchWords');
+  if (searchInput) {
+    searchInput.placeholder = chrome.i18n.getMessage("searchPlaceholder");
+  }
+
   // ポップアップが開かれたときに検索欄にフォーカスを当てる
   document.getElementById("searchWords").focus();
 
@@ -77,19 +93,19 @@ document.addEventListener("DOMContentLoaded", function () {
   restoreCheckboxStates();
 });
 
-function resetSearch() {
+function resetSearch () {
   currentMatchIndex = -1;
   totalMatches = 0;
   updateResultCount();
 }
 
-function clearTabResults() {
+function clearTabResults () {
   tabSearchResults.clear();
   const tabResultsElement = document.getElementById("tabResults");
   tabResultsElement.innerHTML = "";
 }
 
-function performSearch(direction) {
+function performSearch (direction) {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     if (tabs[0] && tabs[0].url.startsWith("chrome://")) {
       alert("この拡張機能は chrome:// ページでは使用できません。");
@@ -121,7 +137,7 @@ function performSearch(direction) {
   });
 }
 
-function searchAllTabs(searchWords, caseSensitive, wholeWord, useRegex) {
+function searchAllTabs (searchWords, caseSensitive, wholeWord, useRegex) {
   clearTabResults();
   chrome.tabs.query({}, (tabs) => {
     let completedSearches = 0;
@@ -164,7 +180,7 @@ function searchAllTabs(searchWords, caseSensitive, wholeWord, useRegex) {
   });
 }
 
-function searchSingleTab(
+function searchSingleTab (
   searchWords,
   caseSensitive,
   wholeWord,
@@ -192,7 +208,7 @@ function searchSingleTab(
   );
 }
 
-function updateTabResult(tabId, tabTitle, tabIndex, matchCount) {
+function updateTabResult (tabId, tabTitle, tabIndex, matchCount) {
   if (matchCount > 0) {
     tabSearchResults.set(tabId, {
       title: tabTitle,
@@ -202,7 +218,7 @@ function updateTabResult(tabId, tabTitle, tabIndex, matchCount) {
   }
 }
 
-function updateTabResultsDisplay() {
+function updateTabResultsDisplay () {
   const tabResultsElement = document.getElementById("tabResults");
   tabResultsElement.innerHTML = "";
 
@@ -241,7 +257,7 @@ function updateTabResultsDisplay() {
   });
 }
 
-function updateResultCount() {
+function updateResultCount () {
   const resultCountElement = document.getElementById("resultCount");
   if (isSearchingMultipleTabs) {
     let totalMatches = 0;
@@ -250,16 +266,15 @@ function updateResultCount() {
     });
     resultCountElement.textContent = `合計: ${totalMatches}件`;
   } else if (totalMatches > 0) {
-    resultCountElement.textContent = `${
-      currentMatchIndex + 1
-    } / ${totalMatches}`;
+    resultCountElement.textContent = `${currentMatchIndex + 1
+      } / ${totalMatches}`;
   } else {
     resultCountElement.textContent = "";
   }
 }
 
 // タブを切り替える関数
-function switchToTab(tabId) {
+function switchToTab (tabId) {
   chrome.tabs.update(tabId, { active: true }, () => {
     if (chrome.runtime.lastError) {
       console.error("Error switching tab:", chrome.runtime.lastError);
@@ -270,7 +285,7 @@ function switchToTab(tabId) {
   });
 }
 
-function updateSearchOptions() {
+function updateSearchOptions () {
   const options = {
     caseSensitive: document.getElementById("caseSensitive").checked,
     wholeWord: document.getElementById("wholeWord").checked,
@@ -300,7 +315,7 @@ function updateSearchOptions() {
 }
 
 // チェックボックスの状態を保存する関数
-function saveCheckboxStates() {
+function saveCheckboxStates () {
   const states = {
     caseSensitive: document.getElementById("caseSensitive").checked,
     wholeWord: document.getElementById("wholeWord").checked,
@@ -315,7 +330,7 @@ function saveCheckboxStates() {
 }
 
 // チェックボックスの状態を復元する関数
-function restoreCheckboxStates() {
+function restoreCheckboxStates () {
   chrome.storage.local.get(["checkboxStates"], function (result) {
     if (result.checkboxStates) {
       document.getElementById("caseSensitive").checked =
